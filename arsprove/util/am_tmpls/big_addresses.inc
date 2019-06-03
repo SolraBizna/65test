@@ -1,0 +1,11 @@
+	Test $0000
+	Test $0100
+	Test $0f00
+	Test $fe00
+	Test $ff00
+	Test $00fd
+	Test $00fe
+	Test $00ff
+	Test $0ffd
+	Test $0ffe
+	Test $0fff

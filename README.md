@@ -1,0 +1,3 @@
+This repository contains source code for all the tools related to my work on testing the [W65C02S](https://www.mouser.com/new/westerndesigncenter/wdc-w65c02s/), the most advanced direct descendent of the venerable 6502. It makes use of an [Arduino Due](https://store.arduino.cc/usa/arduino-due) connected to every significant pin of a DIP-44 W65C02S.
+
+See [HARDWARE.md](HARDWARE.md) for information on how the W65C02S is connected to the Arduino, [CONTROL.md](CONTROL.md) for information on how the Arduino and the host PC communicate, and [API.md](API.md) for information on the API presented by the CGI script.

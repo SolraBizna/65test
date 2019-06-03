@@ -1,0 +1,9 @@
+# Rust standard stuff
+cgi-script/target/
+**/*.rs.bk
+Cargo.lock
+# Test intermediates
+arsprove/tmp
+arsprove/bin
+arsprove/obj
+arsprove/tests
