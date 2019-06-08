@@ -1,0 +1,30 @@
+.INCLUDE "header.inc"
+	SEC
+	LDA #$4
+.REPEAT 12
+	ASL
+	PHA
+	PHP
+.ENDR
+	SEC
+	LDA #$4
+.REPEAT 12
+	ROL
+	PHA
+	PHP
+.ENDR
+	SEC
+	LDA #$4
+.REPEAT 12
+	LSR
+	PHA
+	PHP
+.ENDR
+	SEC
+	LDA #$4
+.REPEAT 12
+	ROR
+	PHA
+	PHP
+.ENDR
+	BRK

@@ -1,0 +1,44 @@
+.INCLUDE "header.inc"
+	; test A -> ?
+	LDA #$AA
+	LDX #$11
+	LDY #$55
+	PHA
+	PHX
+	PHY
+	TAX
+	PHA
+	PHX
+	PHY
+	TAY
+	PHA
+	PHX
+	PHY
+	; test X -> ?
+	LDA #$AA
+	LDX #$11
+	LDY #$55
+	PHA
+	PHX
+	PHY
+	TXA
+	PHA
+	PHX
+	PHY
+	TXS
+	PHA
+	PHX
+	PHY
+	; test Y -> ?
+	LDA #$AA
+	LDX #$11
+	LDY #$55
+	PHA
+	PHX
+	PHY
+	TYA
+	PHA
+	PHX
+	PHY
+	; done
+	BRK

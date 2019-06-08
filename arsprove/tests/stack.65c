@@ -1,0 +1,39 @@
+.INCLUDE "header.inc"
+	LDA #$AA
+	LDX #$11
+	LDY #$55
+	SEC
+	CLD
+	PHA
+	PHX
+	PHY
+	PHP
+	PLA
+	PLX
+	PLY
+	PLP
+	PHA
+	PHX
+	PHY
+	PHP
+	PLX
+	PLA
+	PLY
+	PLP
+	PHA
+	PHX
+	PHY
+	PHP
+	PLY
+	PLX
+	PLA
+	PLP
+	PHA
+	PHX
+	PHY
+	PHP
+	PLP
+	PLX
+	PLA
+	PLY
+	BRK

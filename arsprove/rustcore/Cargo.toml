@@ -1,0 +1,12 @@
+[package]
+name = "rustcore"
+version = "0.0.0"
+authors = ["Solra Bizna <solra@bizna.name>"]
+edition = "2018"
+
+[dependencies]
+w65c02s = "0.9"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+base64 = "0.8"

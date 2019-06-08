@@ -1,0 +1,18 @@
+.INCLUDE "header.inc"
+.MACRO TestLittle
+.DB $C4
+.DB \1
+	PHA
+	PHX
+	PHY
+	PHP
+.ENDM
+.INCLUDE "util/am_tmpls/little_addresses.inc"
+	BRK
+
+.ORGA $00
+.DEFINE X 0
+.REPEAT 256
+.DB X
+.REDEFINE X X+1
+.ENDR

@@ -1,5 +1,4 @@
-#CGI_URL=http://10.0.0.4/private/public/65test.cgi
-CGI_URL=http://localhost/~sbizna/65test.cgi
+CGI_URL=https://bunker.tejat.net/private/public/65test.cgi
 
 all: test
 
@@ -16,6 +15,9 @@ generated_tests.mk: util/gentests.lua gen/optable.csv $(wildcard util/am_tmpls/*
 bin/arscore: obj/arscore.o
 	@mkdir -p bin
 	c++ -std=c++14 -Wall -Werror -O3 -ljsoncpp $^ -o $@
+
+rustcore/target/release/rustcore: rustcore/Cargo.toml $(wildcard rustcore/src/*.rs)
+	cargo +nightly build --release --manifest-path=rustcore/Cargo.toml
 
 obj/%.o: src/%.cc
 	@mkdir -p obj
@@ -45,8 +47,12 @@ tmp/%.hw.json: tmp/%.job.json
 tmp/%.ars.json: tmp/%.job.json bin/arscore
 	bin/arscore < "$<" > "$@" || (rm -f "$@"; false)
 
-tmp/%.test: util/checktest.lua tmp/%.hw.json tmp/%.ars.json
-	util/checktest.lua real "tmp/$*.hw.json" ARS-emu "tmp/$*.ars.json" >"$@" 2>&1 || true
+tmp/%.rust.json: tmp/%.job.json rustcore/target/release/rustcore
+	rustcore/target/release/rustcore < "$<" > "$@" || (rm -f "$@"; false)
+
+tmp/%.test: util/checktest.lua tmp/%.hw.json tmp/%.ars.json tmp/%.rust.json
+	@util/checktest.lua real "tmp/$*.hw.json" ARS-emu "tmp/$*.ars.json" >"$@" 2>&1 || true
+	@util/checktest.lua real "tmp/$*.hw.json" Rust "tmp/$*.rust.json" >>"$@" 2>&1 || true
 
 clean:
 	rm -rf tmp obj bin

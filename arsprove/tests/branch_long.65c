@@ -1,0 +1,59 @@
+.INCLUDE "header.inc"
+	BRA +
+-	BRA -
+.ORGA $0280
++	CLC
+	BCC +
+-	BCS -
+.ORGA $0300
++	SEC
+	BCS +
+-	BCC -
+.ORGA $0380
++	CLV
+	BVC +
+-	BVS -
+.ORGA $0400
++	LDA #$88
+	ADC #$88
+	BVS +
+-	BVC -
+.ORGA $0480
++	CLV
+	LDA #$24
+	ADC #$24
+	BVC +
+-	BVS -
+.ORGA $0500
++	LDA #$00
+	BPL +
+-	BMI -
+.ORGA $0580
++	LDA #$7F
+	BPL +
+-	BMI -
+.ORGA $0600
++	LDA #$80
+	BMI +
+-	BPL -
+.ORGA $0680
++	LDA #$FF
+	BMI +
+-	BPL -
+.ORGA $0700
++	LDA #$00
+	BEQ +
+-	BNE -
+.ORGA $0780
++	LDA #$7F
+	BNE +
+-	BEQ -
+.ORGA $0800
++	LDA #$80
+	BNE +
+-	BEQ -
+.ORGA $0880
++	LDA #$FF
+	BNE +
+-	BEQ -
++	BRK

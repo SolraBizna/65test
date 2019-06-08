@@ -1,0 +1,23 @@
+.INCLUDE "header.inc"
+	JMP +
+.ORGA $02E0
+.DEFINE Q 0
+.REPEAT 16
++	BBR4 $20+Q,+
++	BBR5 $20+Q,+
++	BBR6 $20+Q,+
++	BBR7 $20+Q,+
++	BBR4 $02+(Q<<4),+
++	BBR5 $02+(Q<<4),+
++	BBR6 $02+(Q<<4),+
++	BBR7 $02+(Q<<4),+
+.REDEFINE Q Q+1
+.ENDR
++	BRK
+
+.ORGA $00
+.DEFINE X 0
+.REPEAT 256
+.DB X
+.REDEFINE X X+1
+.ENDR

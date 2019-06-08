@@ -1,0 +1,46 @@
+.INCLUDE "header.inc"
+	BRA +
+-	BRA -
++	CLC
+	BCC +
+-	BCS -
++	SEC
+	BCS +
+-	BCC -
++	CLV
+	BVC +
+-	BVS -
++	LDA #$88
+	ADC #$88
+	BVS +
+-	BVC -
++	CLV
+	LDA #$24
+	ADC #$24
+	BVC +
+-	BVS -
++	LDA #$00
+	BPL +
+-	BMI -
++	LDA #$7F
+	BPL +
+-	BMI -
++	LDA #$80
+	BMI +
+-	BPL -
++	LDA #$FF
+	BMI +
+-	BPL -
++	LDA #$00
+	BEQ +
+-	BNE -
++	LDA #$7F
+	BNE +
+-	BEQ -
++	LDA #$80
+	BNE +
+-	BEQ -
++	LDA #$FF
+	BNE +
+-	BEQ -
++	BRK

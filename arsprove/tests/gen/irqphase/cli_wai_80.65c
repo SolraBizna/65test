@@ -1,0 +1,14 @@
+.INCLUDE "header.inc"
+	CLI
+.REPEAT 256
+.DB $CB
+.ENDR
+	BRK
+
+rti:
+	RTI
+
+.ORGA $fffe
+.DW rti
+.ORGA $fffa
+.DW rti

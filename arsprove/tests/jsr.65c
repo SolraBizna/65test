@@ -1,0 +1,20 @@
+.INCLUDE "header.inc"
+	JSR +
+-	BRA -
++	JSR +
+	RTS
+.ORGA $02FE
++	JSR +
+	RTS
++	JSR +
+	RTS
+.ORGA $03FF
++	JSR +
+	RTS
++	JSR +
+	RTS
+.ORGA $04FC
++	JSR +
+	RTS
++	JSR +
++	RTS

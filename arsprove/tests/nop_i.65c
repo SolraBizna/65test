@@ -1,0 +1,8 @@
+.INCLUDE "header.inc"
+.DB $03,$0B,$13,$1B,$23,$2B,$33,$3B,$43,$4B,$53,$5B,$63,$6B,$73,$7B,$83,$8B,$93,$9B,$A3,$AB,$B3,$BB,$C3,$D3,$E3,$EA,$EB,$F3,$FB
+	PHA
+	PHX
+	PHY
+	PHP
+	BRK
+	

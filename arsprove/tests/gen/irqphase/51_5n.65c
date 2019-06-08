@@ -1,0 +1,10 @@
+.INCLUDE "header.inc"
+.DB 81
+
+.ORGA $f000
+rti:
+	RTI
+.ORGA $fffa
+.DW rti
+.ORGA $fffe
+.DW rti

@@ -1,0 +1,11 @@
+.INCLUDE "header.inc"
+.DB $00,$CA,$00,$FE,$00,$BA,$00,$BE
+-	BRA -
+
+.ORGA $c000
+
+irqHandler:
+	RTI
+
+.ORGA $fffe
+.DW irqHandler

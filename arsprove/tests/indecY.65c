@@ -1,0 +1,10 @@
+.INCLUDE "header.inc"
+	LDA #$10
+.REPEAT 32
+	DEY
+	PHY
+	PHX
+	PHY
+	PHP
+.ENDR
+	BRK

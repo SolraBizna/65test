@@ -1,0 +1,22 @@
+.INCLUDE "header.inc"
+.MACRO TestLittle
+	LDA #<BigAddr
+	STA \1
+	LDA #>BigAddr
+	STA (\1+1)&255
+.DB $52
+.DB \1
+	PHA
+	PHX
+	PHY
+	PHP
+.ENDM
+.MACRO Test
+.DEFINE BigAddr \1
+	TestLittle $00
+	TestLittle $01
+	TestLittle $ff
+.UNDEF BigAddr
+.ENDM
+.INCLUDE "util/am_tmpls/big_addresses.inc"
+	BRK

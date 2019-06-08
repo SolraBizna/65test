@@ -134,8 +134,8 @@ if left.cycles or right.cycles then
    if not identical_cycles then
       print("Reported bus traffic differs.")
       print(("\x1B[1m\t\t%7s - %7s\x1B[0m"):format(leftname, rightname))
-      for n=math.max(1, first_differing_cycle - 10),math.min(#left.cycles, first_differing_cycle + 20) do
-         local parsed = tonumber(left.cycles[n],16)
+      for n=math.max(1, first_differing_cycle - 10),math.min(math.max(#left.cycles, #right.cycles), first_differing_cycle + 20) do
+         local parsed = left.cycles[n] and tonumber(left.cycles[n],16)
          if parsed and parsed & 0xF000000 == 0xF000000 then
             print(("\t\t($%02X = %s)"):format(parsed & 0xFF,
                                               INSTRUCTIONS[parsed & 0xFF]))
@@ -143,7 +143,7 @@ if left.cycles or right.cycles then
          if left.cycles[n] ~= right.cycles[n] then
             io.write("\x1B[31;1m")
          end
-         print(("\t%i\t%7s - %7s"):format(n+4,left.cycles[n],right.cycles[n]))
+         print(("\t%i\t%7s - %7s"):format(n+4,left.cycles[n] or "xxxxxxx",right.cycles[n] or "xxxxxxx"))
          if left.cycles[n] ~= right.cycles[n] then
             io.write("\x1B[0m")
          end

@@ -1,0 +1,18 @@
+.INCLUDE "header.inc"
+.DEFINE r_SerialOut $ff
+.DEFINE g_Operand $00
+	LDY #0
+	SED
+-	CLC
+	CLV
+	TYA
+	SBC g_Operand
+	STA r_SerialOut
+	PHP
+	PLA
+	STA r_SerialOut
+	INY
+	BNE -
+	INC g_Operand
+	BNE -
+	BRK

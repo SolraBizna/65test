@@ -1,0 +1,17 @@
+.INCLUDE "header.inc"
+	JMP +
+	BRK
+.ORGA $300
++	JMP +
+	BRK
+.ORGA $3FF
++	JMP +
+	BRK
+.ORGA $4FE
++	JMP +
+	BRK
+.ORGA $5FD
++	JMP +
+	BRK
+.ORGA $6FC
++	BRK

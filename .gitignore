@@ -2,8 +2,8 @@
 cgi-script/target/
 **/*.rs.bk
 Cargo.lock
+arsprove/rustcore/target/
 # Test intermediates
 arsprove/tmp
 arsprove/bin
 arsprove/obj
-arsprove/tests

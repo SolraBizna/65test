@@ -1,0 +1,33 @@
+.INCLUDE "header.inc"
+.MACRO Test
+	LDY #$00
+.DB $39
+.DW \1
+	PHA
+	PHX
+	PHY
+	PHP
+	LDY #$01
+.DB $39
+.DW \1
+	PHA
+	PHX
+	PHY
+	PHP
+	LDY #$80
+.DB $39
+.DW \1
+	PHA
+	PHX
+	PHY
+	PHP
+	LDY #$FF
+.DB $39
+.DW \1
+	PHA
+	PHX
+	PHY
+	PHP
+.ENDM
+.INCLUDE "util/am_tmpls/big_addresses.inc"
+	BRK

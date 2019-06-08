@@ -1,0 +1,28 @@
+.INCLUDE "header.inc"
+	PHP
+	CLC
+	PHP
+	SEC
+	PHP
+	CLC
+	PHP
+	CLV
+	PHP
+	LDA #$88
+	ADC #$88
+	PHP
+	CLV
+	PHP
+	CLD
+	PHP
+	SED
+	PHP
+	CLD
+	PHP
+	CLI
+	PHP
+	SEI
+	PHP
+	CLI
+	PHP
+	BRK
