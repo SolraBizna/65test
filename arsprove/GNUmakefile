@@ -14,7 +14,7 @@ generated_tests.mk: util/gentests.lua gen/optable.csv $(wildcard util/am_tmpls/*
 
 bin/arscore: obj/arscore.o
 	@mkdir -p bin
-	c++ -std=c++14 -Wall -Werror -O3 -ljsoncpp $^ -o $@
+	c++ -std=c++14 -Wall -Werror -O3 $^ -ljsoncpp -o $@
 
 rustcore/target/release/rustcore: rustcore/Cargo.toml $(wildcard rustcore/src/*.rs)
 	cargo +nightly build --release --manifest-path=rustcore/Cargo.toml
