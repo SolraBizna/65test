@@ -1,0 +1,20 @@
+.INCLUDE "header.inc"
+	CLI
+-	BRA -
+	BRK
+
+nmi:
+        PHP
+        PLA
+        EOR #$04 ; toggle I bit
+        PHA
+        PLP
+-       BRA -
+
+rti:
+	RTI
+
+.ORGA $fffe
+.DW rti
+.ORGA $fffa
+.DW nmi
