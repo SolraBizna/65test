@@ -6,7 +6,7 @@
 nmi:
         PHP
         PLA
-        EOR #$04 ; toggle I bit
+        EOR #$14 ; toggle I and B bits
         PHA
         PLP
 -       BRA -
