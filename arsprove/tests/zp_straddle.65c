@@ -1,0 +1,6 @@
+.INCLUDE "header.inc"
+	LDA ($FF)
+	LDX #1
+	LDA ($FF,X)
+	LDA ($FF),Y
+	BRK
