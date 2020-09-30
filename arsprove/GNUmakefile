@@ -4,6 +4,10 @@ all: test
 
 include generated_tests.mk
 
+ifneq ($(wildcard dotnetcore),)
+DOTNET_EXISTS=1
+endif
+
 # do not regenerate all tests automatically when gen_irqphase_tests is updated
 # YET. (TODO: merge gen_irqphase_tests and gentests later)
 generated_tests.mk: util/gentests.lua gen/optable.csv $(wildcard util/am_tmpls/*.65c)
@@ -50,9 +54,19 @@ tmp/%.ars.json: tmp/%.job.json bin/arscore
 tmp/%.rust.json: tmp/%.job.json rustcore/target/release/rustcore
 	rustcore/target/release/rustcore < "$<" > "$@" || (rm -f "$@"; false)
 
+tmp/%.dotnet.json: tmp/%.job.json dotnetcore/W65C02S-test.exe dotnetcore/W65C02S.dll
+	dotnetcore/W65C02S-test.exe "$<" > "$@" || (rm -f "$@"; false)
+
+ifdef DOTNET_EXISTS
+tmp/%.test: util/checktest.lua tmp/%.hw.json tmp/%.ars.json tmp/%.rust.json tmp/%.dotnet.json
+else
 tmp/%.test: util/checktest.lua tmp/%.hw.json tmp/%.ars.json tmp/%.rust.json
+endif
 	@util/checktest.lua real "tmp/$*.hw.json" ARS-emu "tmp/$*.ars.json" >"$@" 2>&1 || true
 	@util/checktest.lua real "tmp/$*.hw.json" Rust "tmp/$*.rust.json" >>"$@" 2>&1 || true
+ifdef DOTNET_EXISTS
+	@util/checktest.lua real "tmp/$*.hw.json" .NET "tmp/$*.dotnet.json" >>"$@" 2>&1 || true
+endif
 
 clean:
 	rm -rf tmp obj bin
